@@ -102,15 +102,20 @@ class MmWaveVehicularPropagationLossModel : public PropagationLossModel
     std::string GetScenario ();
 
     double GetLoss (Ptr<MobilityModel> a, Ptr<MobilityModel> b) const;
+    
+    virtual double DoCalcRxPower (double txPowerDbm,
+                                  Ptr<MobilityModel> a,
+                                  Ptr<MobilityModel> b) const;
+    
 
   private:
 
     MmWaveVehicularPropagationLossModel (const MmWaveVehicularPropagationLossModel &o);
     MmWaveVehicularPropagationLossModel & operator = (const MmWaveVehicularPropagationLossModel &o);
 
-    virtual double DoCalcRxPower (double txPowerDbm,
-                                  Ptr<MobilityModel> a,
-                                  Ptr<MobilityModel> b) const;
+
+    
+                                  
     virtual int64_t DoAssignStreams (int64_t stream);
     void UpdateConditionMap (Ptr<MobilityModel> a, Ptr<MobilityModel> b, channelCondition cond) const;
 
