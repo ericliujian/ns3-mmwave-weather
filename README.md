@@ -8,20 +8,17 @@ This project is still in progress and will change without notice.
 
 
 ## Getting Started
-To use the module, you can clone this repository directly by:
-
+To use the module, you can clone this repositoryby:
 ```bash
 git clone https://github.com/ericliujian/ns3-mmwave-weather.git
 ```
 
 After clone, you can run several scripts directly:
-
 ```bash
 ./Name-of-file.sh
 ```
 
-If there is an error " bad interpreter: No such file or directory". Please do
-
+If there is an error " bad interpreter: No such file or directory". Please do:
 ```bash
 dos2unix Name-of-file.sh
 ```
