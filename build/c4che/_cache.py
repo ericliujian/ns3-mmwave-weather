@@ -18,8 +18,8 @@ CC_TGT_F = ['-c', '-o']
 CC_VERSION = ('9', '4', '0')
 CFLAGS_GTK = ['-pthread']
 CFLAGS_MACBUNDLE = ['-fPIC']
-CFLAGS_PYEMBED = ['-g', '-fdebug-prefix-map=/build/python3.8-4OrTnN/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3']
-CFLAGS_PYEXT = ['-g', '-fdebug-prefix-map=/build/python3.8-4OrTnN/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3']
+CFLAGS_PYEMBED = ['-g', '-fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3']
+CFLAGS_PYEXT = ['-g', '-fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3']
 CFLAGS_cshlib = ['-fPIC']
 COMPILER_CC = 'gcc'
 COMPILER_CXX = 'g++'
@@ -31,8 +31,8 @@ CXXFLAGS = ['-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-paren
 CXXFLAGS_GTK = ['-pthread']
 CXXFLAGS_MACBUNDLE = ['-fPIC']
 CXXFLAGS_PTHREAD = '-pthread'
-CXXFLAGS_PYEMBED = ['-g', '-fdebug-prefix-map=/build/python3.8-4OrTnN/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3']
-CXXFLAGS_PYEXT = ['-g', '-fdebug-prefix-map=/build/python3.8-4OrTnN/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3', '-fvisibility=hidden', '-Wno-array-bounds']
+CXXFLAGS_PYEMBED = ['-g', '-fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3']
+CXXFLAGS_PYEXT = ['-g', '-fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3', '-fvisibility=hidden', '-Wno-array-bounds']
 CXXFLAGS_cxxshlib = ['-fPIC']
 CXXLNK_SRC_F = []
 CXXLNK_TGT_F = ['-o']

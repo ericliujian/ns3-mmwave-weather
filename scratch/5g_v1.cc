@@ -80,7 +80,7 @@ int main (int argc, char *argv[])
   // This script creates two nodes moving at 20 m/s, placed at a distance of intraGroupDistance m.
   // These nodes exchange packets through a UDP application,
   // and they communicate using a wireless channel.
-  // This V1 use RxPower to check receiver's power in dbm
+  // This V1 use RxPower to check receiver's power in dBm
 
   // system parameters
   double bandwidth ; // bandwidth in Hz
@@ -179,7 +179,6 @@ int main (int argc, char *argv[])
   helper->SetSpectrumPropagationLossModelType ("ns3::MmWaveVehicularSpectrumPropagationLossModel");
   NetDeviceContainer devs = helper->InstallMmWaveVehicularNetDevices (n);
   
-
   // Install the TCP/IP stack in the two nodes
   InternetStackHelper internet;
   internet.Install (n);
@@ -192,6 +191,10 @@ int main (int argc, char *argv[])
   // Need to pair the devices in order to create a correspondence between transmitter and receiver
   // and to populate the < IP addr, RNTI > map.
   helper->PairDevices(devs);
+  
+  // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  double RxPower= propagationLossModel-> DoCalcRxPower(0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
 
 
   // Set the routing table
@@ -226,11 +229,6 @@ int main (int argc, char *argv[])
   UdpClientHelper client (n.Get (1)->GetObject<Ipv4> ()->GetAddress (1, 0).GetLocal (), port);
   ApplicationContainer apps = client.Install (n.Get (0));
   
-  
-  // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
-  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
-  double RxPower= propagationLossModel->DoCalcRxPower (0.0,  n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
-
 
   // set the application start/end time
   apps.Start (MilliSeconds (startTime));
@@ -258,17 +256,17 @@ int main (int argc, char *argv[])
 
   // create a result.csv file under ns3 default folder and output received packets, throughput, particle radius,visibility,humidity, frequency,
   // first and last packet received time, intraGroupDistance into the file.
-  /*
+  
   std::ofstream outdata; // outdata is like cin
   
-  outdata.open("result5g.csv", std::ofstream::app); // opens the file
+  outdata.open("result5g_v1.csv", std::ofstream::app); // opens the file
    if( !outdata ) { // file couldn't be opened
       cerr << "Error: file could not be opened" << endl;
       exit(1);
    }
   outdata << g_rxPackets<<","<<throughput<<","<<RxPower<<","<<particleradius<<","<<visibility<<","<<humidity<<","<<frequency<<","<<g_firstReceived.GetSeconds()<<","<<g_lastReceived.GetSeconds()<<","<<intraGroupDistance << endl;
   outdata.close();
-  */
+  
 
   return 0;
 }

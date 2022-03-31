@@ -95,8 +95,8 @@ class MmWaveVehicularPropagationLossModel : public PropagationLossModel
     double GetVisibility (void) const;
     void SetHumidity (double humidity);
     double GetHumidity (void) const;
-
-
+    
+ 
     char GetChannelCondition (Ptr<MobilityModel> a, Ptr<MobilityModel> b);
 
     std::string GetScenario ();

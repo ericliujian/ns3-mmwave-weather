@@ -6,14 +6,14 @@
 #change bandwith to 1e7 for 4G LTE signal
 bandwidth=1e8
 #change frequency to 0.7, 0.85,1.7,1.9,2.1 for 4G LTE, 28 39 47 73.5 for 5G 39e9 47e9 73.5e9
-frequency=39e9
+frequency=28e9
 interPacketInterval=30
 speed=20
 
 #three weather impacts, need to change in for loops
-particleradius=0.0002  
-visibility=0.002
-humidity=60
+particleradius=0.00002  
+visibility=0.02
+humidity=40
 
 intraGroupDistance=100
 
@@ -34,10 +34,10 @@ commScenario4="Extended-V2V-Urban" # communication environment
 
 <<comment
 for frequency in 28e9 ; do
-    for particleradius in $(seq 0.0000 0.00005 0.0009); do
-        for visibility in $(seq 0.000 0.0005 0.005); do
+    for particleradius in $(seq 0.0001 0.0001 0.0008); do
+        for visibility in $(seq 0.00 0.001 0.005); do
             for humidity in $(seq 0 20 100); do
-	        ./waf --run "5g --bandwidth=$bandwidth --frequency=$frequency --iip=$interPacketInterval --speed=$speed --intraGroupDistance=$intraGroupDistance --Pvalue=$particleradius --Vvalue=$visibility --Hvalue=$humidity --channel_condition=$environment1 --scenario=$commScenario1"            
+	        ./waf --run "5g_v1 --bandwidth=$bandwidth --frequency=$frequency --iip=$interPacketInterval --speed=$speed --intraGroupDistance=$intraGroupDistance --Pvalue=$particleradius --Vvalue=$visibility --Hvalue=$humidity --channel_condition=$environment1 --scenario=$commScenario1"            
             done
         done
     done

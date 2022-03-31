@@ -3,7 +3,7 @@
 
 ./waf configure 
 
-#change bandwith to 1e7 for 4G LTE signal
+#change bandwith to 1e8 for 5G LTE signal
 bandwidth=1e7
 #change frequency to 0.7, 0.85,1.7,1.9,2.1 for 4G LTE, 28 39 47 73.5 for 5G 39e9 47e9 73.5e9
 frequency=2.1e9
@@ -13,7 +13,7 @@ speed=20
 #three weather impacts, need to change in for loops
 particleradius=0.0002  
 visibility=0.002
-humidity=60
+humidity=20
 
 intraGroupDistance=100
 

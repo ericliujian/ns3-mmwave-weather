@@ -36,7 +36,7 @@ for frequency in 28e9 ; do
     for particleradius in $(seq 0.0000 0.00005 0.0009); do
         for visibility in $(seq 0.000 0.0005 0.005); do
             for humidity in $(seq 0 20 100); do
-	        ./waf --run "5g --bandwidth=$bandwidth --frequency=$frequency --iip=$interPacketInterval --speed=$speed --intraGroupDistance=$intraGroupDistance --Pvalue=$particleradius --Vvalue=$visibility --Hvalue=$humidity --channel_condition=$environment1 --scenario=$commScenario1"            
+	        ./waf --run "intersection_v1_1 --bandwidth=$bandwidth --frequency=$frequency --iip=$interPacketInterval --speed=$speed --intraGroupDistance=$intraGroupDistance --Pvalue=$particleradius --Vvalue=$visibility --Hvalue=$humidity --channel_condition=$environment1 --scenario=$commScenario1"            
             done
         done
     done
