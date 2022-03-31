@@ -15,6 +15,5 @@
 #define HAVE_SIGNAL_H 1
 #define HAVE_PTHREAD_H 1
 #define HAVE_RT 1
-#define HAVE_BOOST_UNITS 1
 
 #endif /* W_NS3_CORE_CONFIG_H_WAF */
