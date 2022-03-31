@@ -8,7 +8,7 @@ This project is still in progress and will change without notice.
 
 
 ## Getting Started
-To use the module, you can clone this repositoryby:
+To use the module, you can clone this repository by:
 ```bash
 git clone https://github.com/ericliujian/ns3-mmwave-weather.git
 ```
@@ -20,8 +20,9 @@ After clone, you can run several scripts directly:
 
 If there is an error " bad interpreter: No such file or directory". Please do:
 ```bash
-dos2unix Name-of-file.sh
+find . -type f -print0 | xargs -0 dos2unix
 ```
+It will recursively find all files inside current ns3 directory and call for these files dos2unix command to change to UNIX format.
 
 
 
