@@ -43,6 +43,18 @@ using std::endl;
 #include<vector>
 
 
+void MmWaveProp(Ptr< MmWaveVehicularPropagationLossModel> prop1){
+prop1->SetHumidity(humidity);
+}
+
+double timeMove = 1;
+while (timeMove <= endTime)
+{
+                Simulator::Schedule(Seconds(timeMove), &MmWaveProp, humidity);               
+                humidity+= 1;
+                timeMove += 1;
+}
+
 #include "ns3/config-store-module.h"
 
 NS_LOG_COMPONENT_DEFINE ("5G");
@@ -214,6 +226,7 @@ int main (int argc, char *argv[])
                          
                 Config::SetDefault("ns3::MmWaveVehicularPropagationLossModel::HHumidity", DoubleValue(humidity));
                 
+                //get RxPower to check if HHumidity was set correctly. 
                 Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
                 double RxPower= propagationLossModel->DoCalcRxPower (0.0,  n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
                               
