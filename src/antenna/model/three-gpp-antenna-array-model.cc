@@ -79,7 +79,7 @@ ThreeGppAntennaArrayModel::GetTypeId (void)
                MakeDoubleChecker<double> (0, M_PI))
     .AddAttribute ("ElementGain",
                "Directional gain of an antenna element in dBi",
-               DoubleValue (4.97),
+               DoubleValue (4.97),   
                MakeDoubleAccessor (&ThreeGppAntennaArrayModel::m_gE),
                MakeDoubleChecker<double> (0, 8))
     .AddAttribute ("IsotropicElements",

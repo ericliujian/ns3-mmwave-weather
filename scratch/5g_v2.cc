@@ -231,13 +231,7 @@ int main (int argc, char *argv[])
      
    print_vector(RxVector, ",");
   
-  
-   /*Config::SetDefault("ns3::MmWaveVehicularPropagationLossModel::HHumidity", DoubleValue(40));             
-   Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel2 = CreateObject<MmWaveVehicularPropagationLossModel> ();
-   double RxPower= propagationLossModel2->DoCalcRxPower (0.0,  n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
-   std::cout << RxPower << std::endl;   
-     */          
-                   
+          
   // Install the TCP/IP stack in the two nodes
   InternetStackHelper internet;
   internet.Install (n);

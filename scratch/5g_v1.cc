@@ -179,6 +179,10 @@ int main (int argc, char *argv[])
   helper->SetSpectrumPropagationLossModelType ("ns3::MmWaveVehicularSpectrumPropagationLossModel");
   NetDeviceContainer devs = helper->InstallMmWaveVehicularNetDevices (n);
   
+  // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  double RxPower= propagationLossModel-> DoCalcRxPower(15.0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
   // Install the TCP/IP stack in the two nodes
   InternetStackHelper internet;
   internet.Install (n);
@@ -191,10 +195,6 @@ int main (int argc, char *argv[])
   // Need to pair the devices in order to create a correspondence between transmitter and receiver
   // and to populate the < IP addr, RNTI > map.
   helper->PairDevices(devs);
-  
-  // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
-  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
-  double RxPower= propagationLossModel-> DoCalcRxPower(0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
 
 
   // Set the routing table
