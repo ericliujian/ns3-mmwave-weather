@@ -42,19 +42,6 @@ using std::endl;
 
 #include<vector>
 
-
-void MmWaveProp(Ptr< MmWaveVehicularPropagationLossModel> prop1){
-prop1->SetHumidity(humidity);
-}
-
-double timeMove = 1;
-while (timeMove <= endTime)
-{
-                Simulator::Schedule(Seconds(timeMove), &MmWaveProp, humidity);               
-                humidity+= 1;
-                timeMove += 1;
-}
-
 #include "ns3/config-store-module.h"
 
 NS_LOG_COMPONENT_DEFINE ("5G");
@@ -67,7 +54,6 @@ uint32_t g_txPackets; // total number of transmitted packets
 
 Time g_firstReceived; // timestamp of the first time a packet is received
 Time g_lastReceived; // timestamp of the last received packet
-
 
 
 static void Rx (Ptr<OutputStreamWrapper> stream, Ptr<const Packet> p)
@@ -131,7 +117,6 @@ int main (int argc, char *argv[])
   double visibility;
   double humidity;
   
-
 
   // channel and scenario choose
   std::string channel_condition;

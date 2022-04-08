@@ -194,18 +194,28 @@ int main (int argc, char *argv[])
   NetDeviceContainer devs = helper->InstallMmWaveVehicularNetDevices (n);
   
   // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
-  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
-  
-  
-  Simulator::Schedule(Seconds(0), &MmWaveProp, 10);
-  Simulator::Schedule(Seconds(0.5), &MmWaveProp, 20);
-  Simulator::Schedule(Seconds(1), &MmWaveProp,  50);
-  Simulator::Schedule(Seconds(1.5), &MmWaveProp, 80);
  
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel1 = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  Simulator::Schedule(Seconds(0), &MmWaveProp, 10);
+  double RxPower1= propagationLossModel1-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel2 = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  Simulator::Schedule(Seconds(0.5), &MmWaveProp, 20);
+  double RxPower2= propagationLossModel2-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel3 = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  Simulator::Schedule(Seconds(1.5), &MmWaveProp, 50);
+  double RxPower3= propagationLossModel3-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel4 = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  Simulator::Schedule(Seconds(1.5), &MmWaveProp, 80);
+  double RxPower4= propagationLossModel4-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
+
 
   //Config::SetFailSafe("/$ns3::MmWaveVehicularPropagationLossModel/HHumidity", DoubleValue(humidity));
   
-   double RxPower= propagationLossModel-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+   
 
   
   // Install the TCP/IP stack in the two nodes
@@ -275,7 +285,10 @@ int main (int argc, char *argv[])
   
   std::cout << "----------- Statistics -----------" << std::endl;
   std::cout << "Packets size:\t\t" << packetSize << " Bytes" << std::endl;
-  std::cout << "Receiver Power:\t\t" << RxPower << " dBm" << std::endl;
+  std::cout << "Receiver Power:\t\t" << RxPower1 << " dBm" << std::endl;
+  std::cout << "Receiver Power:\t\t" << RxPower2 << " dBm" << std::endl;
+  std::cout << "Receiver Power:\t\t" << RxPower3 << " dBm" << std::endl;
+   std::cout << "Receiver Power:\t\t" << RxPower4 << " dBm" << std::endl;
   std::cout << "Humidity:\t" << humidity << std::endl;
   std::cout << "Packets received:\t" << g_rxPackets << std::endl;
   std::cout << "Average Throughput:\t" << throughput << " Mbps" << std::endl;
