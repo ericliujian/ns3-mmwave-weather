@@ -53,6 +53,7 @@ uint32_t g_txPackets; // total number of transmitted packets
 Time g_firstReceived; // timestamp of the first time a packet is received
 Time g_lastReceived; // timestamp of the last received packet
 
+/*
 double humidity;
 
 static void MmWaveProp(double humidity){
@@ -67,6 +68,18 @@ std::cout << "Humidity:\t" << humidity << std::endl;
 
 
 }
+*/
+
+void AdjustHumidity (double new_value)
+
+{
+
+Config::Set ("/ChannelList/*/$ns3::SpectrumChannel/PropagationLossModel/$ns3::MmWaveVehicularPropagationLossModel/HHumidity", DoubleValue (new_value));
+
+}
+
+
+
 static void Rx (Ptr<OutputStreamWrapper> stream, Ptr<const Packet> p)
 {
  g_rxPackets++;
@@ -103,7 +116,7 @@ int main (int argc, char *argv[])
   // applications
   uint32_t packetSize = 1024; // UDP packet size in bytes
   uint32_t startTime = 50; // application start time in milliseconds
-  uint32_t endTime = 2000; // application end time in milliseconds
+  uint32_t endTime = 5000; // application end time in milliseconds
   
   uint32_t interPacketInterval; // interpacket interval in microseconds
 
@@ -195,7 +208,29 @@ int main (int argc, char *argv[])
   
   // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
  
-  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel1 = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  
+  Time delay = MilliSeconds (500); 
+
+  double new_humidity = 0; // or whatever
+  
+
+  for (int t=0; t<=10; t++){
+  std::cout << "Humidity:\t\t" << new_humidity << " %" << std::endl;
+  
+
+  //Simulator::Schedule (delay*t, &MmWaveVehicularPropagationLossModel::SetHumidity, propagationLossModel, new_humidity);
+  new_humidity +=10;
+  
+  Simulator::Schedule (delay*t, &AdjustHumidity, new_humidity);
+  // double RxPower= propagationLossModel-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
+  //std::cout << "Receiver Power:\t\t" << RxPower << " dBm" << std::endl;
+  
+  }
+  
+  double RxPower= propagationLossModel-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  /*
   Simulator::Schedule(Seconds(0), &MmWaveProp, 10);
   double RxPower1= propagationLossModel1-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
   
@@ -210,7 +245,7 @@ int main (int argc, char *argv[])
   Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel4 = CreateObject<MmWaveVehicularPropagationLossModel> ();
   Simulator::Schedule(Seconds(1.5), &MmWaveProp, 80);
   double RxPower4= propagationLossModel4-> DoCalcRxPower( 0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
-  
+  */
 
 
   //Config::SetFailSafe("/$ns3::MmWaveVehicularPropagationLossModel/HHumidity", DoubleValue(humidity));
@@ -285,10 +320,10 @@ int main (int argc, char *argv[])
   
   std::cout << "----------- Statistics -----------" << std::endl;
   std::cout << "Packets size:\t\t" << packetSize << " Bytes" << std::endl;
-  std::cout << "Receiver Power:\t\t" << RxPower1 << " dBm" << std::endl;
-  std::cout << "Receiver Power:\t\t" << RxPower2 << " dBm" << std::endl;
+  std::cout << "Receiver Power:\t\t" << RxPower << " dBm" << std::endl;
+  /*std::cout << "Receiver Power:\t\t" << RxPower2 << " dBm" << std::endl;
   std::cout << "Receiver Power:\t\t" << RxPower3 << " dBm" << std::endl;
-   std::cout << "Receiver Power:\t\t" << RxPower4 << " dBm" << std::endl;
+   std::cout << "Receiver Power:\t\t" << RxPower4 << " dBm" << std::endl;*/
   std::cout << "Humidity:\t" << humidity << std::endl;
   std::cout << "Packets received:\t" << g_rxPackets << std::endl;
   std::cout << "Average Throughput:\t" << throughput << " Mbps" << std::endl;

@@ -127,8 +127,8 @@ double Compute_Ad(double m_frequency)
   double C3=379*10000*(((e1-1)*(e1-1)*(e1+2))+(2*(e1-1)*(e1+2)-9)+e2*e2*e2*e2)/(((e1+2)*(e1+2)+e2*e2)*((e1+2)*(e1+2)+e2*e2));
   double Ad;
   
-  std::cout << "Visbility:\t" << v << std::endl;
-  std::cout << "Humidity:\t" << H << std::endl;
+  //std::cout << "Visbility:\t" << v << std::endl;
+  //std::cout << "Humidity:\t" << H << std::endl;
   
   Ad=ae*freqGHz/v*(C1+C2*ae*ae*freqGHz*freqGHz+C3*ae*ae*ae*freqGHz*freqGHz*freqGHz);
   
