@@ -76,7 +76,7 @@ double RxPower= propagationLossModel-> DoCalcRxPower( 15, mob1, mob2);
 
 std::cout << "RxPower:\t" << RxPower << std::endl;
 
-std::ofstream outdata; // outdata is like cin
+/*std::ofstream outdata; // outdata is like cin
   
   outdata.open("RxPower.csv", std::ofstream::app); // opens the file
    if( !outdata ) { // file couldn't be opened
@@ -87,7 +87,7 @@ std::ofstream outdata; // outdata is like cin
   outdata.close();
 
 Simulator::Schedule (Seconds (2), &CalRxPower,mob1, mob2);
-
+*/
 
 }
 
@@ -218,21 +218,33 @@ int main (int argc, char *argv[])
   NetDeviceContainer devs = helper->InstallMmWaveVehicularNetDevices (n);
   
 
-  // increase humidity by 2% every 1 second
-  for (int t =0; t<100; t++){
+  // increase humidity by 1% every 1 second
+/*  for (int t =0; t<100; t++){
   
   Simulator::Schedule(Seconds(1*t), &MmWaveProp, 1*t);
   
  
   }
   
-
-  
+ 
   // calculate RxPower every 2 second
   
   Time delay = MilliSeconds (2000);   
-  Simulator::Schedule (delay, &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  Simulator::Schedule (delay, &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());*/
+  
+  // increase humidity by 1% every 1 second
+  for (int t =0; t<20; t++){
+  
+        Simulator::Schedule(Seconds(1*t), &MmWaveProp, 5*t);
 
+  // calculate RxPower every 2 second
+
+      if ( t % 5 == 0){
+                 Simulator::Schedule (Seconds(t), &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
+      }
+ 
+  }
 
 
   // Install the TCP/IP stack in the two nodes
