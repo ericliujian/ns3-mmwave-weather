@@ -47,6 +47,8 @@ NS_LOG_COMPONENT_DEFINE ("5G");
 using namespace ns3;
 using namespace millicar;
 
+Ptr<MmWaveVehicularHelper> helper = CreateObject<MmWaveVehicularHelper> ();
+
 uint32_t g_rxPackets; // total number of received packets
 uint32_t g_txPackets; // total number of transmitted packets
 
@@ -55,8 +57,9 @@ Time g_lastReceived; // timestamp of the last received packet
 
 
 double humidity;
+double txPower=15;
 
-static void MmWaveProp(double humidity){
+void MmWaveProp(double humidity){
 
 Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
 
@@ -66,6 +69,27 @@ propagationLossModel->SetHumidity(humidity);
 std::cout << "Humidity:\t" << humidity << std::endl;
 
 
+}
+
+
+void computePathLoss(NetDeviceContainer devs, double stepTime) {
+  auto channel = DynamicCast<MmWaveVehicularNetDevice>(devs.Get(0))->GetPhy()->GetSpectrumPhy()->GetSpectrumChannel();
+  PointerValue plm;
+  channel->GetAttribute("PropagationLossModel", plm);
+  Ptr<MmWaveVehicularPropagationLossModel> pathloss = DynamicCast<MmWaveVehicularPropagationLossModel>(plm.Get<PropagationLossModel>());
+
+  Ptr<MobilityModel> mobileNode0 = devs.Get(0)->GetNode()->GetObject<MobilityModel>();
+  Ptr<MobilityModel> mobileNode1 = devs.Get(1)->GetNode()->GetObject<MobilityModel>();
+  
+
+  //double pathLossVal = pathloss->GetLoss(mobileNode1, mobileNode0);
+  double RxPowerVal = pathloss ->DoCalcRxPower( txPower, mobileNode1, mobileNode0);
+
+  //std::cout << "\n The value of the path loss is: " << pathLossVal << std::endl;
+  std::cout << "\n The value of the RxPOWER is: " << RxPowerVal << std::endl;
+
+ 
+  Simulator::Schedule(Seconds(stepTime), &computePathLoss, devs, stepTime);
 }
  
 
@@ -144,6 +168,8 @@ int main (int argc, char *argv[])
   std::string channel_condition;
   std::string scenario;
 
+  double stepTime = 1.0;
+
   CommandLine cmd;
   //
   cmd.AddValue ("bandwidth", "used bandwidth", bandwidth);
@@ -211,7 +237,7 @@ int main (int argc, char *argv[])
   n.Get (1)->GetObject<ConstantVelocityMobilityModel> ()->SetVelocity (Vector (0, speed, 0));
 
   // create and configure the helper
-  Ptr<MmWaveVehicularHelper> helper = CreateObject<MmWaveVehicularHelper> ();
+
   helper->SetNumerology (3);
   helper->SetPropagationLossModelType ("ns3::MmWaveVehicularPropagationLossModel");
   helper->SetSpectrumPropagationLossModelType ("ns3::MmWaveVehicularSpectrumPropagationLossModel");
@@ -239,12 +265,12 @@ int main (int argc, char *argv[])
 
   // calculate RxPower every 2 second
 
-      if ( t % 5 == 0){
-                 Simulator::Schedule (Seconds(t), &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
-  
+    if ( t % 5 == 0){
+                Simulator::Schedule (Seconds(1*t), &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+
       }
- 
-  }
+ }
+  
 
 
   // Install the TCP/IP stack in the two nodes
@@ -298,14 +324,15 @@ int main (int argc, char *argv[])
   apps.Start (MilliSeconds (startTime));
   apps.Stop (MilliSeconds (endTime));
   
-
-  Simulator::Stop (MilliSeconds (endTime + 1000));
-  
-    
-  // Invoke GUI just before entering Simulator::Run ()
+  // Invoke GUI just before entering Simulator::Run 
   /*GtkConfigStore config;
   config.ConfigureDefaults ();
   config.ConfigureAttributes ();*/
+  
+  
+  computePathLoss(devs, stepTime);
+  Simulator::Stop (MilliSeconds (endTime + 1000));
+   
     
   Simulator::Run ();
   Simulator::Destroy ();
