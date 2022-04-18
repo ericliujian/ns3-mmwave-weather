@@ -25,6 +25,19 @@ find . -type f -print0 | xargs -0 dos2unix
 It will recursively find all files inside current ns3 directory and call for these files dos2unix command to change to UNIX format.
 
 
+##System specification:
+
+The MilliCar extension and the examples were tested on the following system:
+
+    ns-3: ns-3.33
+    Ubuntu 20.04.2 LTS
+
+If you see "collect2: error: ld returned 1 exit status", that might because you are using a older version of NS-3 on newer C++ compiler:
+
+```bash
+CXXFLAGS="-Wall" ./waf configure
+./waf -vv
+```
 
 ## Related modules
 
