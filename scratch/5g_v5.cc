@@ -47,7 +47,6 @@ NS_LOG_COMPONENT_DEFINE ("5G");
 using namespace ns3;
 using namespace millicar;
 
-Ptr<MmWaveVehicularHelper> helper = CreateObject<MmWaveVehicularHelper> ();
 
 uint32_t g_rxPackets; // total number of received packets
 uint32_t g_txPackets; // total number of transmitted packets
@@ -59,7 +58,7 @@ Time g_lastReceived; // timestamp of the last received packet
 double humidity;
 double txPower=15;
 
-void MmWaveProp(double humidity){
+void MmWaveProp(double humidity, double stepTime){
 
 Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
 
@@ -68,6 +67,9 @@ propagationLossModel->SetHumidity(humidity);
 
 std::cout << "Humidity:\t" << humidity << std::endl;
 
+humidity +=1;
+
+Simulator::Schedule(Seconds(stepTime), &MmWaveProp, humidity, stepTime);
 
 }
 
@@ -88,11 +90,21 @@ void computePathLoss(NetDeviceContainer devs, double stepTime) {
   //std::cout << "\n The value of the path loss is: " << pathLossVal << std::endl;
   std::cout << "\n The value of the RxPOWER is: " << RxPowerVal << std::endl;
 
+  std::ofstream outdata; // outdata is like cin
+  
+  outdata.open("RxPower3.csv", std::ofstream::app); // opens the file
+   if( !outdata ) { // file couldn't be opened
+      cerr << "Error: file could not be opened" << endl;
+      exit(1);
+   }
+  outdata << RxPowerVal<< endl;
+  outdata.close();
+
  
   Simulator::Schedule(Seconds(stepTime), &computePathLoss, devs, stepTime);
 }
  
-
+/*
 static void CalRxPower(Ptr< MobilityModel > mob1, Ptr< MobilityModel > mob2){
 
 Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
@@ -100,7 +112,7 @@ double RxPower= propagationLossModel-> DoCalcRxPower( 15, mob1, mob2);
 
 std::cout << "RxPower:\t" << RxPower << std::endl;
 
-/*std::ofstream outdata; // outdata is like cin
+  std::ofstream outdata; // outdata is like cin
   
   outdata.open("RxPower.csv", std::ofstream::app); // opens the file
    if( !outdata ) { // file couldn't be opened
@@ -111,9 +123,9 @@ std::cout << "RxPower:\t" << RxPower << std::endl;
   outdata.close();
 
 Simulator::Schedule (Seconds (2), &CalRxPower,mob1, mob2);
-*/
 
-}
+
+}*/
 
 static void Rx (Ptr<OutputStreamWrapper> stream, Ptr<const Packet> p)
 {
@@ -169,6 +181,7 @@ int main (int argc, char *argv[])
   std::string scenario;
 
   double stepTime = 1.0;
+  double stepTime2= 2.0;
 
   CommandLine cmd;
   //
@@ -237,7 +250,7 @@ int main (int argc, char *argv[])
   n.Get (1)->GetObject<ConstantVelocityMobilityModel> ()->SetVelocity (Vector (0, speed, 0));
 
   // create and configure the helper
-
+  Ptr<MmWaveVehicularHelper> helper = CreateObject<MmWaveVehicularHelper> ();
   helper->SetNumerology (3);
   helper->SetPropagationLossModelType ("ns3::MmWaveVehicularPropagationLossModel");
   helper->SetSpectrumPropagationLossModelType ("ns3::MmWaveVehicularSpectrumPropagationLossModel");
@@ -259,17 +272,17 @@ int main (int argc, char *argv[])
   Simulator::Schedule (delay, &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());*/
   
   // increase humidity by 1% every 1 second
-  for (int t =0; t<20; t++){
+  //for (int t =0; t<20; t++){
   
-        Simulator::Schedule(Seconds(1*t), &MmWaveProp, 5*t);
+        //Simulator::Schedule(Seconds(1*t), &MmWaveProp, 5*t);
 
   // calculate RxPower every 2 second
 
-    if ( t % 5 == 0){
-                Simulator::Schedule (Seconds(1*t), &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+    //if ( t % 5 == 0){
+            //    Simulator::Schedule (Seconds(1*t), &CalRxPower,n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
 
-      }
- }
+    //  }
+// }
   
 
 
@@ -329,8 +342,8 @@ int main (int argc, char *argv[])
   config.ConfigureDefaults ();
   config.ConfigureAttributes ();*/
   
-  
-  computePathLoss(devs, stepTime);
+  MmWaveProp(humidity, stepTime);
+  computePathLoss(devs, stepTime2);
   Simulator::Stop (MilliSeconds (endTime + 1000));
    
     
