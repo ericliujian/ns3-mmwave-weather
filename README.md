@@ -25,7 +25,7 @@ find . -type f -print0 | xargs -0 dos2unix
 It will recursively find all files inside current ns3 directory and call for these files dos2unix command to change to UNIX format.
 
 
-##System specification:
+## System specification:
 
 The MilliCar extension and the examples were tested on the following system:
 

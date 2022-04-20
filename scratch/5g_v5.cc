@@ -64,17 +64,31 @@ Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmW
 
 propagationLossModel->SetHumidity(humidity);
 
+/*
+auto channel = DynamicCast<MmWaveVehicularNetDevice>(devs.Get(0))->GetPhy()->GetSpectrumPhy()->GetSpectrumChannel();
+  PointerValue plm;
+  channel->GetAttribute("PropagationLossModel", plm);
+  Ptr<MmWaveVehicularPropagationLossModel> pathloss = DynamicCast<MmWaveVehicularPropagationLossModel>(plm.Get<PropagationLossModel>());
+
+  pathloss->SetHumidity(humidity);
+
+*/   
+
 
 std::cout << "Humidity:\t" << humidity << std::endl;
 
 humidity +=1;
+
+if (humidity >=100) {
+       humidity=100;  
+    }
 
 Simulator::Schedule(Seconds(stepTime), &MmWaveProp, humidity, stepTime);
 
 }
 
 
-void computePathLoss(NetDeviceContainer devs, double stepTime) {
+void computeRxPower(NetDeviceContainer devs, double stepTime) {
   auto channel = DynamicCast<MmWaveVehicularNetDevice>(devs.Get(0))->GetPhy()->GetSpectrumPhy()->GetSpectrumChannel();
   PointerValue plm;
   channel->GetAttribute("PropagationLossModel", plm);
@@ -84,10 +98,9 @@ void computePathLoss(NetDeviceContainer devs, double stepTime) {
   Ptr<MobilityModel> mobileNode1 = devs.Get(1)->GetNode()->GetObject<MobilityModel>();
   
 
-  //double pathLossVal = pathloss->GetLoss(mobileNode1, mobileNode0);
   double RxPowerVal = pathloss ->DoCalcRxPower( txPower, mobileNode1, mobileNode0);
 
-  //std::cout << "\n The value of the path loss is: " << pathLossVal << std::endl;
+
   std::cout << "\n The value of the RxPOWER is: " << RxPowerVal << std::endl;
 
   std::ofstream outdata; // outdata is like cin
@@ -101,7 +114,7 @@ void computePathLoss(NetDeviceContainer devs, double stepTime) {
   outdata.close();
 
  
-  Simulator::Schedule(Seconds(stepTime), &computePathLoss, devs, stepTime);
+  Simulator::Schedule(Seconds(stepTime), &computeRxPower, devs, stepTime);
 }
  
 /*
@@ -343,7 +356,8 @@ int main (int argc, char *argv[])
   config.ConfigureAttributes ();*/
   
   MmWaveProp(humidity, stepTime);
-  computePathLoss(devs, stepTime2);
+  //MmWaveProp(devs,humidity, stepTime);
+  computeRxPower(devs, stepTime2);
   Simulator::Stop (MilliSeconds (endTime + 1000));
    
     
