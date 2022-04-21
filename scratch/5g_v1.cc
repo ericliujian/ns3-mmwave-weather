@@ -31,6 +31,8 @@
 #include "ns3/core-module.h"
 #include "ns3/mmwave-vehicular-propagation-loss-model.h"
 
+#include "ns3/flow-monitor-helper.h"
+
 
 // include and usings for output results into csv file, config GUI invoked
 #include <iostream>
@@ -228,6 +230,16 @@ int main (int argc, char *argv[])
 
   UdpClientHelper client (n.Get (1)->GetObject<Ipv4> ()->GetAddress (1, 0).GetLocal (), port);
   ApplicationContainer apps = client.Install (n.Get (0));
+
+  // Flow monitor
+  Ptr<FlowMonitor> flowMonitor;
+  FlowMonitorHelper flowHelper;
+  flowMonitor = flowHelper.InstallAll();
+
+  
+  
+
+  flowMonitor->SerializeToXmlFile("5Gv2.xml", true, true);
   
 
   // set the application start/end time
