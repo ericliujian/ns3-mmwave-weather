@@ -2,11 +2,12 @@ APPNAME = 'ns'
 AR = ['/usr/bin/ar']
 ARFLAGS = ['rcs']
 BINDIR = '/usr/local/bin'
+BOOST_VERSION = '1_65_1'
 BUILD_PROFILE = 'debug'
 BUILD_SUFFIX = '-debug'
 CC = ['/usr/bin/gcc']
 CCDEFINES = ['_DEBUG']
-CCFLAGS = ['-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing']
+CCFLAGS = ['-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-Wall', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing']
 CCFLAGS_PTHREAD = '-pthread'
 CCFLAGS_PYEXT = ['-fvisibility=hidden']
 CCLNK_SRC_F = []
@@ -22,10 +23,10 @@ CFLAGS_PYEXT = ['-g', '-fdebug-prefix-map=/build/python3.6-oIdwdj/python3.6-3.6.
 CFLAGS_cshlib = ['-fPIC']
 COMPILER_CC = 'gcc'
 COMPILER_CXX = 'g++'
+CPPFLAGS = ['-DHAVE_BOOST_UNITS']
 CPPPATH_ST = '-I%s'
 CXX = ['/usr/bin/g++']
-CXXDEFINES = ['_DEBUG']
-CXXFLAGS = ['-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing']
+CXXFLAGS = ['-Wall', '-std=c++11', '-Wno-error=deprecated-declarations']
 CXXFLAGS_GTK = ['-pthread']
 CXXFLAGS_MACBUNDLE = ['-fPIC']
 CXXFLAGS_PTHREAD = '-pthread'
@@ -43,7 +44,7 @@ DEFINES = ['NS3_BUILD_PROFILE_DEBUG', 'NS3_ASSERT_ENABLE', 'NS3_LOG_ENABLE', 'HA
 DEFINES_PYEMBED = ['NDEBUG']
 DEFINES_PYEXT = ['NDEBUG']
 DEFINES_ST = '-D%s'
-DEFINE_COMMENTS = {'PYTHONDIR': '', 'PYTHONARCHDIR': '', 'HAVE_PYEMBED': '', 'HAVE_PYEXT': '', 'HAVE_PYTHON_H': '', 'HAVE_GTK': '', 'HAVE_UINT128_T': '', 'HAVE___UINT128_T': '', 'INT64X64_USE_128': '', 'HAVE_STDINT_H': '', 'HAVE_INTTYPES_H': '', 'HAVE_SYS_INT_TYPES_H': '', 'HAVE_SYS_TYPES_H': '', 'HAVE_SYS_STAT_H': '', 'HAVE_DIRENT_H': '', 'HAVE_SIGNAL_H': '', 'HAVE_PTHREAD_H': '', 'HAVE_RT': '', 'HAVE_SYS_IOCTL_H': '', 'HAVE_IF_NETS_H': '', 'HAVE_NET_ETHERNET_H': '', 'HAVE_IF_TUN_H': '', 'HAVE_PACKET_H': '', 'HAVE_NETMAP_USER_H': '', 'HAVE_SEMAPHORE_H': ''}
+DEFINE_COMMENTS = {'PYTHONDIR': '', 'PYTHONARCHDIR': '', 'HAVE_PYEMBED': '', 'HAVE_PYEXT': '', 'HAVE_PYTHON_H': '', 'HAVE_GTK': '', 'HAVE_UINT128_T': '', 'HAVE___UINT128_T': '', 'INT64X64_USE_128': '', 'HAVE_STDINT_H': '', 'HAVE_INTTYPES_H': '', 'HAVE_SYS_INT_TYPES_H': '', 'HAVE_SYS_TYPES_H': '', 'HAVE_SYS_STAT_H': '', 'HAVE_DIRENT_H': '', 'HAVE_SIGNAL_H': '', 'HAVE_PTHREAD_H': '', 'HAVE_RT': '', 'HAVE_BOOST_UNITS': '', 'HAVE_SYS_IOCTL_H': '', 'HAVE_IF_NETS_H': '', 'HAVE_NET_ETHERNET_H': '', 'HAVE_IF_TUN_H': '', 'HAVE_PACKET_H': '', 'HAVE_NETMAP_USER_H': '', 'HAVE_SEMAPHORE_H': ''}
 DEST_BINFMT = 'elf'
 DEST_CPU = 'x86_64'
 DEST_OS = 'linux'
@@ -70,6 +71,7 @@ ENABLE_TESTS = False
 ENABLE_THREADING = True
 EXAMPLE_DIRECTORIES = ['stats', 'naming', 'matrix-topology', 'channel-models', 'udp', 'tutorial', 'ipv6', 'realtime', 'energy', 'wireless', 'udp-client-server', 'tcp', 'socket', 'traffic-control', 'error-model', 'routing']
 EXEC_PREFIX = '/usr/local'
+HAVE_BOOST_UNITS_SYSTEMS_SI_HPP = 1
 HAVE_DIRENT_H = 1
 HAVE_GTK = 1
 HAVE_INTTYPES_H = 1
@@ -91,6 +93,7 @@ HAVE_SYS_TYPES_H = 1
 HAVE___UINT128_T = 1
 HTMLDIR = '/usr/local/share/doc/ns'
 INCLUDEDIR = '/usr/local/include'
+INCLUDES_BOOST = '/usr/include'
 INCLUDES_GTK = ['/usr/include/gtk-3.0', '/usr/include/at-spi2-atk/2.0', '/usr/include/at-spi-2.0', '/usr/include/dbus-1.0', '/usr/lib/x86_64-linux-gnu/dbus-1.0/include', '/usr/include/gio-unix-2.0/', '/usr/include/cairo', '/usr/include/pango-1.0', '/usr/include/harfbuzz', '/usr/include/atk-1.0', '/usr/include/pixman-1', '/usr/include/freetype2', '/usr/include/libpng16', '/usr/include/gdk-pixbuf-2.0', '/usr/include/glib-2.0', '/usr/lib/x86_64-linux-gnu/glib-2.0/include']
 INCLUDES_PYEMBED = ['/usr/include/python3.6m']
 INCLUDES_PYEXT = ['/usr/include/python3.6m']

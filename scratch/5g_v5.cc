@@ -77,10 +77,12 @@ auto channel = DynamicCast<MmWaveVehicularNetDevice>(devs.Get(0))->GetPhy()->Get
 
 std::cout << "Humidity:\t" << humidity << std::endl;
 
+
 humidity +=1;
 
 if (humidity >=100) {
        humidity=100;  
+
     }
 
 Simulator::Schedule(Seconds(stepTime), &MmWaveProp, humidity, stepTime);
@@ -100,17 +102,21 @@ void computeRxPower(NetDeviceContainer devs, double stepTime) {
 
   double RxPowerVal = pathloss ->DoCalcRxPower( txPower, mobileNode1, mobileNode0);
 
+  //double PL = pathloss -> GetLoss (mobileNode1, mobileNode0);
 
   std::cout << "\n The value of the RxPOWER is: " << RxPowerVal << std::endl;
 
+ // std::cout << "\n The value of the PathLoss is: " << PL << std::endl;
+
   std::ofstream outdata; // outdata is like cin
   
-  outdata.open("RxPower3.csv", std::ofstream::app); // opens the file
+  outdata.open("RxPower5.91k.csv", std::ofstream::app); // opens the file
    if( !outdata ) { // file couldn't be opened
       cerr << "Error: file could not be opened" << endl;
       exit(1);
    }
   outdata << RxPowerVal<< endl;
+ // outdata << PL<< endl;
   outdata.close();
 
  
@@ -175,8 +181,8 @@ int main (int argc, char *argv[])
 
   // applications
   uint32_t packetSize = 1024; // UDP packet size in bytes
-  uint32_t startTime = 50; // application start time in milliseconds
-  uint32_t endTime = 100000; // application end time in milliseconds
+  uint32_t startTime = 0.05; // application start time in milliseconds
+  uint32_t endTime = 100; // application end time in milliseconds
   
   uint32_t interPacketInterval; // interpacket interval in microseconds
 
@@ -193,8 +199,8 @@ int main (int argc, char *argv[])
   std::string channel_condition;
   std::string scenario;
 
-  double stepTime = 1.0;
-  double stepTime2= 2.0;
+  double stepTime = 0.001;
+  double stepTime2= 0.002;
 
   CommandLine cmd;
   //
@@ -358,7 +364,7 @@ int main (int argc, char *argv[])
   MmWaveProp(humidity, stepTime);
   //MmWaveProp(devs,humidity, stepTime);
   computeRxPower(devs, stepTime2);
-  Simulator::Stop (MilliSeconds (endTime + 1000));
+  Simulator::Stop (MilliSeconds (endTime + 1));
    
     
   Simulator::Run ();

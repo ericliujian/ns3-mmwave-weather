@@ -284,7 +284,7 @@ int main (int argc, char *argv[])
   
   std::ofstream outdata; // outdata is like cin
   
-  outdata.open("RxPowerhumidity2.csv", std::ofstream::app); // opens the file
+  outdata.open("RxPowerhumidity5.9.csv", std::ofstream::app); // opens the file
    if( !outdata ) { // file couldn't be opened
       cerr << "Error: file could not be opened" << endl;
       exit(1);

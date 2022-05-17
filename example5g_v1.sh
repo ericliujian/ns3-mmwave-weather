@@ -13,7 +13,7 @@ speed=20
 #three weather impacts, need to change in for loops
 particleradius=0.0002
 visibility=0.002
-humidity=80
+humidity=60
 
 intraGroupDistance=10
 
@@ -26,9 +26,9 @@ commScenario2="V2V-Urban" # communication environment
 commScenario3="Extended-V2V-Highway" # communication environment 
 commScenario4="Extended-V2V-Urban" # communication environment 
 
-#for humidity in $(seq 0 1 100); do
+for particleradius in $(seq 0.00001 0.00001 0.001); do
 ./waf --run "5g_v1 --bandwidth=$bandwidth --frequency=$frequency --iip=$interPacketInterval --speed=$speed --intraGroupDistance=$intraGroupDistance --Pvalue=$particleradius --Vvalue=$visibility --Hvalue=$humidity --channel_condition=$environment1 --scenario=$commScenario1" 
-#done
+done
 
 #three nested for loops works for setting up experiments for weather impacts, also add one for loop for frequency
 

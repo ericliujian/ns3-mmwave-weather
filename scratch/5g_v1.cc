@@ -232,7 +232,7 @@ int main (int argc, char *argv[])
   ApplicationContainer apps = client.Install (n.Get (0));
 
   // Flow monitor
-  Ptr<FlowMonitor> flowMonitor;
+  /*Ptr<FlowMonitor> flowMonitor;
   FlowMonitorHelper flowHelper;
   flowMonitor = flowHelper.InstallAll();
 
@@ -240,7 +240,7 @@ int main (int argc, char *argv[])
   
 
   flowMonitor->SerializeToXmlFile("5Gv2.xml", true, true);
-  
+  */
 
   // set the application start/end time
   apps.Start (MilliSeconds (startTime));
@@ -271,7 +271,7 @@ int main (int argc, char *argv[])
   
   std::ofstream outdata; // outdata is like cin
   
-  outdata.open("RxPowerhumidity.csv", std::ofstream::app); // opens the file
+  outdata.open("RxPowerparticle.csv", std::ofstream::app); // opens the file
    if( !outdata ) { // file couldn't be opened
       cerr << "Error: file could not be opened" << endl;
       exit(1);
