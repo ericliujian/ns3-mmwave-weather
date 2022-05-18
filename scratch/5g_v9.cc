@@ -67,6 +67,7 @@ Time g_lastReceived; // timestamp of the last received packet
 
 
 double humidity;
+double visibility;
 double txPower=15;
 int iteration=0;
 
@@ -91,18 +92,21 @@ matrix readCSV( string filename )
 }
 
 
-void MmWaveProp(double humidity,double stepTime, int iteration){
+void MmWaveProp(double humidity,double visibility, double stepTime, int iteration){
 
-matrix M = readCSV( "/home/ericliujian/ns3-mmwave-weather/scratch/Humidity_data_short.csv" );
+matrix M = readCSV( "/home/ericliujian/ns3-mmwave-weather/scratch/Blanding2021cleaned.csv" );
 
 Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
 
 humidity = M[iteration][0];
+visibility= M[iteration][1];
 
 propagationLossModel->SetHumidity(humidity);
+propagationLossModel->SetVisibility(visibility);
 
 
 std::cout << "Humidity:\t" << humidity << std::endl;
+std::cout << "Visibility:\t" << visibility << std::endl;
 
 iteration +=1;
 
@@ -127,7 +131,7 @@ if (humidity >=100) {
 
     }*/
 
-Simulator::Schedule(Seconds(stepTime), &MmWaveProp, humidity, stepTime,iteration);
+Simulator::Schedule(Seconds(stepTime), &MmWaveProp, humidity, visibility, stepTime,iteration);
 
 }
 
@@ -152,7 +156,7 @@ void computeRxPower(NetDeviceContainer devs) {
 
   std::ofstream outdata; // outdata is like cin
   
-  outdata.open("RxPower5.9weather1.1ms.csv", std::ofstream::app); // opens the file
+  outdata.open("RxPower5.9Blandingweather1.1ms.csv", std::ofstream::app); // opens the file
    if( !outdata ) { // file couldn't be opened
       cerr << "Error: file could not be opened" << endl;
       exit(1);
@@ -205,7 +209,7 @@ int main (int argc, char *argv[])
   // applications
   uint32_t packetSize = 1024; // UDP packet size in bytes
   uint32_t startTime = 0.05; // application start time in milliseconds
-  uint32_t endTime = 1440; // application end time in milliseconds
+  uint32_t endTime = 23528; // application end time in milliseconds
 
   uint32_t timeRes = 1; // 
   
@@ -259,7 +263,7 @@ int main (int argc, char *argv[])
 
   // set weather impacts + frequency in MmWaveVehicularPropagationLossModel
   Config::SetDefault("ns3::MmWaveVehicularPropagationLossModel::ParticleRadius", DoubleValue(particleradius));
-  Config::SetDefault("ns3::MmWaveVehicularPropagationLossModel::VVisibility", DoubleValue(visibility));
+  //Config::SetDefault("ns3::MmWaveVehicularPropagationLossModel::VVisibility", DoubleValue(visibility));
   //Config::SetDefault("ns3::MmWaveVehicularPropagationLossModel::HHumidity", DoubleValue(humidity));
   
   
@@ -359,16 +363,17 @@ int main (int argc, char *argv[])
   config.ConfigureDefaults ();
   config.ConfigureAttributes ();*/
   
-  matrix M = readCSV( "/home/ericliujian/ns3-mmwave-weather/scratch/Humidity_data_short.csv" );
+  matrix M = readCSV( "/home/ericliujian/ns3-mmwave-weather/scratch/Blanding2021cleaned.csv" );
   //write( M );
 
   std::cout << "----------- Humidity -----------" << std::endl;
   std::cout << "HUMIDITY+++++"<<M[0][0] << std::endl;
   
   humidity = M[0][0];
+  visibility= M[0][1];
 
   
-  MmWaveProp(humidity, stepTime, iteration);
+  MmWaveProp(humidity, visibility, stepTime, iteration);
   //MmWaveProp(devs,humidity, stepTime);
 
   for (int i = 0; i < endTime / timeRes; i++)

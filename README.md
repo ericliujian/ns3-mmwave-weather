@@ -30,7 +30,7 @@ It will recursively find all files inside current ns3 directory and call for the
 The MilliCar extension and the examples were tested on the following system:
 
     ns-3: ns-3.33
-    Ubuntu 20.04.4 LTS
+    Ubuntu 18.04.6 LTS and 20.04.4 LTS
 
 If you see "collect2: error: ld returned 1 exit status", that might because you are using a older version of NS-3 on newer C++ compiler:
 
@@ -38,9 +38,6 @@ If you see "collect2: error: ld returned 1 exit status", that might because you 
 CXXFLAGS="-Wall" ./waf configure
 ./waf -vv
 ```
-
-## Related modules
-
 
 ## References 
 M. Drago, T. Zugno, M. Polese, M. Giordani, M. Zorzi, "Millicar - An ns-3 Module for MmWave NR V2X Networks," Proc. of the Workshop on ns-3 (WNS3), 2020.
