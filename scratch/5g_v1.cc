@@ -147,7 +147,7 @@ int main (int argc, char *argv[])
   Config::SetDefault("ns3::MmWaveVehicularPropagationLossModel::Frequency", DoubleValue(frequency));
 
 
-  Config::SetDefault ("ns3::MmWaveVehicularPropagationLossModel::Shadowing", BooleanValue (true));
+  Config::SetDefault ("ns3::MmWaveVehicularPropagationLossModel::Shadowing", BooleanValue (false));
   Config::SetDefault ("ns3::MmWaveVehicularSpectrumPropagationLossModel::UpdatePeriod", TimeValue (MilliSeconds (1)));
   Config::SetDefault ("ns3::MmWaveVehicularAntennaArrayModel::AntennaElements", UintegerValue (16));
   Config::SetDefault ("ns3::MmWaveVehicularAntennaArrayModel::AntennaElementPattern", StringValue ("3GPP-V2V"));
@@ -181,22 +181,37 @@ int main (int argc, char *argv[])
   helper->SetSpectrumPropagationLossModelType ("ns3::MmWaveVehicularSpectrumPropagationLossModel");
   NetDeviceContainer devs = helper->InstallMmWaveVehicularNetDevices (n);
   
+  
+  Ptr<MmWaveVehicularHelper> helper2 = CreateObject<MmWaveVehicularHelper> ();
+  helper2->SetNumerology (2);
+  helper2->SetPropagationLossModelType ("ns3::MmWaveVehicularPropagationLossModel");
+  helper2->SetSpectrumPropagationLossModelType ("ns3::MmWaveVehicularSpectrumPropagationLossModel");
+  NetDeviceContainer devs2 = helper2->InstallMmWaveVehicularNetDevices (n);
+  
   // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
   Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel = CreateObject<MmWaveVehicularPropagationLossModel> ();
   double RxPower= propagationLossModel-> DoCalcRxPower(15.0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
+  
+  // create a MmWaveVehicularPropagationLossModel object and use DoCalcRxPower to compute RxPower
+  Ptr<MmWaveVehicularPropagationLossModel> propagationLossModel2 = CreateObject<MmWaveVehicularPropagationLossModel> ();
+  double RxPower2= propagationLossModel2-> DoCalcRxPower(15.0, n.Get (0)->GetObject<MobilityModel> (), n.Get (1)->GetObject<MobilityModel> ());
   
   // Install the TCP/IP stack in the two nodes
   InternetStackHelper internet;
   internet.Install (n);
 
   Ipv4AddressHelper ipv4;
+  Ipv4AddressHelper ipv42;
   NS_LOG_INFO ("Assign IP Addresses.");
   ipv4.SetBase ("10.1.1.0", "255.255.255.0");
   Ipv4InterfaceContainer i = ipv4.Assign (devs);
+  ipv42.SetBase ("11.1.1.0", "255.255.255.0");
+  Ipv4InterfaceContainer i2 = ipv42.Assign (devs2);
 
   // Need to pair the devices in order to create a correspondence between transmitter and receiver
   // and to populate the < IP addr, RNTI > map.
   helper->PairDevices(devs);
+  helper2->PairDevices(devs2);
 
 
   // Set the routing table
@@ -232,15 +247,15 @@ int main (int argc, char *argv[])
   ApplicationContainer apps = client.Install (n.Get (0));
 
   // Flow monitor
-  /*Ptr<FlowMonitor> flowMonitor;
+  Ptr<FlowMonitor> flowMonitor;
   FlowMonitorHelper flowHelper;
   flowMonitor = flowHelper.InstallAll();
 
   
   
 
-  flowMonitor->SerializeToXmlFile("5Gv2.xml", true, true);
-  */
+
+  
 
   // set the application start/end time
   apps.Start (MilliSeconds (startTime));
@@ -254,6 +269,8 @@ int main (int argc, char *argv[])
   config.ConfigureAttributes ();*/
     
   Simulator::Run ();
+  
+  flowMonitor->SerializeToXmlFile("5Gv2.xml", true, true);
   Simulator::Destroy ();
 
   double throughput = (double(g_rxPackets)*(double(packetSize)*8)/double( g_lastReceived.GetSeconds() - g_firstReceived.GetSeconds()))/1e6;
@@ -261,6 +278,7 @@ int main (int argc, char *argv[])
   std::cout << "----------- Statistics -----------" << std::endl;
   std::cout << "Packets size:\t\t" << packetSize << " Bytes" << std::endl;
   std::cout << "Receiver Power:\t\t" << RxPower << " dBm" << std::endl;
+  std::cout << "Receiver Power2:\t\t" << RxPower2 << " dBm" << std::endl;
   std::cout << "Packets received:\t" << g_rxPackets << std::endl;
   std::cout << "Average Throughput:\t" << throughput << " Mbps" << std::endl;
   std::cout << "First Received Time:\t" << g_firstReceived.GetSeconds() << std::endl;

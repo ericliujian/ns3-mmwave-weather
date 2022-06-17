@@ -71,6 +71,14 @@ public:
    * \return The current central frequency
    */
   double GetFrequency (void) const;
+  
+  // set and get methods for three weather impacts
+  void SetParticleRadius (double particleradius);
+  double GetParticleRadius (void) const;
+  void SetVisibility (double visibility);
+  double GetVisibility (void) const;
+  void SetHumidity (double humidity);
+  double GetHumidity (void) const;
 
   /**
    * \brief Copy constructor
@@ -236,6 +244,11 @@ protected:
   double m_frequency; //!< operating frequency in Hz
   bool m_shadowingEnabled; //!< enable/disable shadowing
   Ptr<NormalRandomVariable> m_normRandomVariable; //!< normal random variable
+  
+  // three weather parameters
+  double particleradius;
+  double visibility;
+  double humidity;
 
   /** Define a struct for the m_shadowingMap entries */
   struct ShadowingMapItem

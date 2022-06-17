@@ -34,6 +34,10 @@ NS_LOG_COMPONENT_DEFINE ("ThreeGppPropagationLossModel");
 
 static const double M_C = 3.0e8; // propagation velocity in free space
 
+double ae;
+double v;
+double H;
+
 // ------------------------------------------------------------------------- //
 
 NS_OBJECT_ENSURE_REGISTERED (ThreeGppPropagationLossModel);
@@ -58,9 +62,57 @@ ThreeGppPropagationLossModel::GetTypeId (void)
                    MakePointerAccessor (&ThreeGppPropagationLossModel::SetChannelConditionModel,
                                         &ThreeGppPropagationLossModel::GetChannelConditionModel),
                    MakePointerChecker<ChannelConditionModel> ())
+     //three weather impacts attributes added under MmWaveVehicularPropagationLossModel
+    .AddAttribute ("ParticleRadius",
+                   "Particle radius valuue :))",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&ThreeGppPropagationLossModel::SetParticleRadius,
+                                       &ThreeGppPropagationLossModel::GetParticleRadius),
+                   MakeDoubleChecker<double> ())
+    .AddAttribute ("VVisibility",
+                   "visibility valuue :))",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&ThreeGppPropagationLossModel::SetVisibility,
+                                       &ThreeGppPropagationLossModel::GetVisibility),
+                   MakeDoubleChecker<double> ())
+    .AddAttribute ("HHumidity",
+                   "humidity valuue :))",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&ThreeGppPropagationLossModel::SetHumidity,
+                                       &ThreeGppPropagationLossModel::GetHumidity),
+                   MakeDoubleChecker<double> (0.0,100.0))
   ;
   return tid;
 }
+
+// compute weather impact functions
+double Compute_Ad(double m_frequency)
+{
+  //weather impact Ad
+  //double ae=0.00026; 
+
+  //double H=100;
+
+  //double v=0.002;
+  
+  double freqGHz = m_frequency / 1e9;
+  double e1=6.3485+0.04*H-(7.78e-4)*H*H+(5.56e-6)*H*H*H;
+  double e2=0.0929+0.02*H-(3.71e-4)*H*H+(2.76e-6)*H*H*H;;
+  double C1=1886*e2/((e1+2)*(e1+2)+e2*e2);
+  double C2=137*1000*e2*(6*(7*e1*e1+7*e2*e2+4*e1-20)/(5*(((e1+2)*(e1+2)+e2*e2)*((e1+2)*(e1+2)+e2*e2))+1/15+5/(3*(((2*e1+3)*(2*e1+3))+4*e2*e2))));
+  double C3=379*10000*(((e1-1)*(e1-1)*(e1+2))+(2*(e1-1)*(e1+2)-9)+e2*e2*e2*e2)/(((e1+2)*(e1+2)+e2*e2)*((e1+2)*(e1+2)+e2*e2));
+  double Ad;
+  
+  //std::cout << "Visbility:\t" << v << std::endl;
+  //std::cout << "Humidity:\t" << H << std::endl;
+  
+  Ad=ae*freqGHz/v*(C1+C2*ae*ae*freqGHz*freqGHz+C3*ae*ae*ae*freqGHz*freqGHz*freqGHz);
+  
+  return Ad;
+  
+}  
+
+
 
 ThreeGppPropagationLossModel::ThreeGppPropagationLossModel ()
   : PropagationLossModel ()
@@ -115,6 +167,42 @@ ThreeGppPropagationLossModel::GetFrequency () const
   return m_frequency;
 }
 
+// three set and get methods for weather impacts
+void
+ThreeGppPropagationLossModel::SetParticleRadius (double particleradius)
+{
+  ae = particleradius;
+}
+
+double
+ThreeGppPropagationLossModel::GetParticleRadius (void) const
+{
+  return ae;
+}
+void
+ThreeGppPropagationLossModel::SetVisibility (double visibility)
+{
+  v = visibility;
+}
+
+double
+ThreeGppPropagationLossModel::GetVisibility (void) const
+{
+  return v;
+}
+
+void
+ThreeGppPropagationLossModel::SetHumidity (double humidity)
+{
+  H = humidity;
+}
+
+double
+ThreeGppPropagationLossModel::GetHumidity (void) const
+{
+  return H;
+}
+
 double
 ThreeGppPropagationLossModel::DoCalcRxPower (double txPowerDbm,
                                              Ptr<MobilityModel> a,
@@ -157,7 +245,7 @@ ThreeGppPropagationLossModel::GetLoss (Ptr<ChannelCondition> cond, double distan
   double loss = 0;
   if (cond->GetLosCondition () == ChannelCondition::LosConditionValue::LOS)
     {
-      loss = GetLossLos (distance2d, distance3d, hUt, hBs);
+      loss = GetLossLos (distance2d, distance3d, hUt, hBs)+ Compute_Ad(m_frequency)+ Compute_Ad(m_frequency);
     }
   else if (cond->GetLosCondition () == ChannelCondition::LosConditionValue::NLOSv)
     {
