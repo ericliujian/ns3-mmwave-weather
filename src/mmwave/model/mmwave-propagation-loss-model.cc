@@ -49,6 +49,11 @@ namespace mmwave {
 
 NS_OBJECT_ENSURE_REGISTERED (MmWavePropagationLossModel);
 
+
+double ae;
+double v;
+double H;
+
 TypeId
 MmWavePropagationLossModel::GetTypeId (void)
 {
@@ -76,9 +81,46 @@ MmWavePropagationLossModel::GetTypeId (void)
                    BooleanValue (false),
                    MakeBooleanAccessor (&MmWavePropagationLossModel::m_fixedLossTst),
                    MakeBooleanChecker ())
+     //three weather impacts attributes added under MmWaveVehicularPropagationLossModel
+    .AddAttribute ("ParticleRadius",
+                   "Particle radius valuue :))",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&MmWavePropagationLossModel::SetParticleRadius,
+                                       &MmWavePropagationLossModel::GetParticleRadius),
+                   MakeDoubleChecker<double> ())
+    .AddAttribute ("VVisibility",
+                   "visibility valuue :))",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&MmWavePropagationLossModel::SetVisibility,
+                                       &MmWavePropagationLossModel::GetVisibility),
+                   MakeDoubleChecker<double> ())
+    .AddAttribute ("HHumidity",
+                   "humidity valuue :))",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&MmWavePropagationLossModel::SetHumidity,
+                                       &MmWavePropagationLossModel::GetHumidity),
+                   MakeDoubleChecker<double> ())
   ;
   return tid;
 }
+
+// compute weather impact functions
+double Compute_Ad(double m_frequency)
+{
+ 
+  double freqGHz = m_frequency / 1e9;
+  double e1=6.3485+0.04*H-(7.78e-4)*H*H+(5.56e-6)*H*H*H;
+  double e2=0.0929+0.02*H-(3.71e-4)*H*H+(2.76e-6)*H*H*H;;
+  double C1=1886*e2/((e1+2)*(e1+2)+e2*e2);
+  double C2=137*1000*e2*(6*(7*e1*e1+7*e2*e2+4*e1-20)/(5*(((e1+2)*(e1+2)+e2*e2)*((e1+2)*(e1+2)+e2*e2))+1/15+5/(3*(((2*e1+3)*(2*e1+3))+4*e2*e2))));
+  double C3=379*10000*(((e1-1)*(e1-1)*(e1+2))+(2*(e1-1)*(e1+2)-9)+e2*e2*e2*e2)/(((e1+2)*(e1+2)+e2*e2)*((e1+2)*(e1+2)+e2*e2));
+  double Ad;
+
+  
+  Ad=ae*freqGHz/v*(C1+C2*ae*ae*freqGHz*freqGHz+C3*ae*ae*ae*freqGHz*freqGHz*freqGHz);
+  
+  return Ad;
+}  
 
 MmWavePropagationLossModel::MmWavePropagationLossModel ()
 {
@@ -101,6 +143,44 @@ MmWavePropagationLossModel::GetFrequency (void) const
 {
   return m_frequency;
 }
+
+// three set and get methods for weather impacts
+void
+MmWavePropagationLossModel::SetParticleRadius (double particleradius)
+{
+  ae = particleradius;
+}
+
+double
+MmWavePropagationLossModel::GetParticleRadius (void) const
+{
+  return ae;
+}
+
+void
+MmWavePropagationLossModel::SetVisibility (double visibility)
+{
+  v = visibility;
+}
+
+double
+MmWavePropagationLossModel::GetVisibility (void) const
+{
+  return v;
+}
+
+void
+MmWavePropagationLossModel::SetHumidity (double humidity)
+{
+  H = humidity;
+}
+
+double
+MmWavePropagationLossModel::GetHumidity (void) const
+{
+  return H;
+}
+
 
 void MmWavePropagationLossModel::SetLossFixedDb (double loss)
 {
@@ -233,7 +313,7 @@ MmWavePropagationLossModel::DoCalcRxPower (double txPowerDbm,
         }
 
       NS_LOG_DEBUG ("distance=" << distance << ", scenario=" << (*it).second.m_channelScenario << ", shadowing" << (*it).second.m_shadowing);
-      double lossDb = alpha + beta * 10 * log10 (distance) + (*it).second.m_shadowing;
+      double lossDb = alpha + beta * 10 * log10 (distance) + (*it).second.m_shadowing + Compute_Ad(m_frequency);
       NS_LOG_DEBUG ("time=" << Simulator::Now ().GetSeconds () << " POut=" << POut << " PLos=" << PLos << " PNlos=" << PNlos << " lossDb=" << lossDb);
       return txPowerDbm - std::max (lossDb, m_minLoss);
     }

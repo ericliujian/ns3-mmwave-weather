@@ -78,6 +78,15 @@ public:
    * \returns the current frequency (Hz)
    */
   double GetFrequency (void) const;
+  
+  
+ // set and get methods for three weather impacts
+  void SetParticleRadius (double particleradius);
+  double GetParticleRadius (void) const;
+  void SetVisibility (double visibility);
+  double GetVisibility (void) const;
+  void SetHumidity (double humidity);
+  double GetHumidity (void) const;
 
   void SetLossFixedDb (double loss);
 
@@ -89,6 +98,11 @@ private:
                                 Ptr<MobilityModel> b) const;
   virtual int64_t DoAssignStreams (int64_t stream);
   void UpDataScenarioMap ();
+  
+  // three weather parameters
+  double particleradius;
+  double visibility;
+  double humidity;
 
   double m_lambda;
   mutable double m_frequency;

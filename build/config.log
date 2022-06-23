@@ -1,4 +1,4 @@
-# project ns (3.33) configured on Fri Jun 17 07:38:22 2022 by
+# project ns (3.33) configured on Wed Jun 22 23:31:41 2022 by
 # waf 2.0.21 (abi 20, python 3080af0 on linux)
 # using ./waf configure
 #
@@ -10,7 +10,7 @@ Setting out to
 /home/ericliujian/ns3-mmwave-weather/build
 ----------------------------------------
 Checking for 'gcc' (C compiler)
-find program=['gcc', 'cc'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
+find program=['gcc', 'cc'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
 ['/usr/bin/gcc', '-dM', '-E', '-']
 out: #define __SSP_STRONG__ 3
 #define __DBL_MIN_EXP__ (-1021)
@@ -361,14 +361,14 @@ out: #define __SSP_STRONG__ 3
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
 
-find program=['ar'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
+find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
 /usr/bin/gcc
 ----------------------------------------
 Checking for cc version
 9.4.0
 ----------------------------------------
 Checking for 'g++' (C++ compiler)
-find program=['g++', 'c++'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CXX' -> ['/usr/bin/g++']
+find program=['g++', 'c++'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CXX' -> ['/usr/bin/g++']
 ['/usr/bin/g++', '-dM', '-E', '-']
 out: #define __SSP_STRONG__ 3
 #define __DBL_MIN_EXP__ (-1021)
@@ -719,7 +719,7 @@ out: #define __SSP_STRONG__ 3
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
 
-find program=['ar'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
+find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
 /usr/bin/g++
 ------------------------------------------------------
 Checking for compilation flag -Wl,--soname=foo support
@@ -741,46 +741,16 @@ int main() { return 0; }
 ok
 ------------------------------------------------------
 Checking boost includes
-1_71
-------------------------------------------------------
-Checking boost libs
-Found the boost path in /usr/lib/x86_64-linux-gnu with the libraries:
-    /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_locale.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
-Trying pattern boost_system(-gcc[0-9]{0,3})-1_71.so$
-Trying pattern boost_system-1_71.so$
-Trying pattern boost_system(-gcc[0-9]{0,3}).so$
-Trying pattern boost_system.so$
-Trying pattern boost_system.so$
-Trying pattern boost_system
-lib system not found in /usr/lib/x86_64-linux-gnu
+headers not found, please provide a --boost-includes argument (see help)
 from /home/ericliujian/ns3-mmwave-weather: The configuration failed
 ------------------------------------------------------
 Checking boost includes
-1_71
-------------------------------------------------------
-Checking boost libs
-Found the boost path in /usr/lib/x86_64-linux-gnu with the libraries:
-    /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_locale.so.1.71.0
-    /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
-Trying pattern boost_system(-gcc[0-9]{0,3})-1_71.so$
-Trying pattern boost_system-1_71.so$
-Trying pattern boost_system(-gcc[0-9]{0,3}).so$
-Trying pattern boost_system.so$
-Trying pattern boost_system.so$
-Trying pattern boost_system
-lib system not found in /usr/lib/x86_64-linux-gnu
+headers not found, please provide a --boost-includes argument (see help)
 from /home/ericliujian/ns3-mmwave-weather: The configuration failed
 ------------------------------------------------------
 Checking for program 'python'
 /usr/bin/python3
-find program=['python'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python3']
+find program=['python'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python3']
 ['/usr/bin/python3', '-c', 'import sys\ntry:\n print(sys.implementation.cache_tag)\nexcept AttributeError:\n import imp\n print(imp.get_tag())\n']
 out: cpython-38
 
@@ -792,198 +762,39 @@ final
 0
 
 ['/usr/bin/python3', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(standard_lib=0, prefix='/usr/local') or ''))"]
-out: '/usr/local/lib/python3/dist-packages'
-
-'/usr/local/lib/python3/dist-packages'
-
-['/usr/bin/python3', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(plat_specific=1, standard_lib=0, prefix='/usr/local') or ''))"]
-out: '/usr/local/lib/python3/dist-packages'
-
-'/usr/local/lib/python3/dist-packages'
-
-------------------------------------------------------
-Checking for python version >= 2.3
-3.8.10
-['/usr/bin/python3', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_config_var('prefix') or ''))\nprint(repr(get_config_var('SO') or ''))\nprint(repr(get_config_var('LDFLAGS') or ''))\nprint(repr(get_config_var('LIBDIR') or ''))\nprint(repr(get_config_var('LIBPL') or ''))\nprint(repr(get_config_var('INCLUDEPY') or ''))\nprint(repr(get_config_var('Py_ENABLE_SHARED') or ''))\nprint(repr(get_config_var('MACOSX_DEPLOYMENT_TARGET') or ''))\nprint(repr(get_config_var('LDSHARED') or ''))\nprint(repr(get_config_var('CFLAGS') or ''))\nprint(repr(get_config_var('LDVERSION') or ''))"]
-out: '/usr'
-'.cpython-38-x86_64-linux-gnu.so'
-'-Wl,-Bsymbolic-functions  -Wl,-z,relro -g -fwrapv -O2   '
-'/usr/lib'
-'/usr/lib/python3.8/config-3.8-x86_64-linux-gnu'
-'/usr/include/python3.8'
-1
-''
-'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions  -Wl,-z,relro -g -fwrapv -O2   '
-'-Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g   -fstack-protector-strong -Wformat -Werror=format-security  -g -fwrapv -O2   '
-'3.8'
-
-err: <string>:4: DeprecationWarning: SO is deprecated, use EXT_SUFFIX
-
-'/usr'
-'.cpython-38-x86_64-linux-gnu.so'
-'-Wl,-Bsymbolic-functions  -Wl,-z,relro -g -fwrapv -O2   '
-'/usr/lib'
-'/usr/lib/python3.8/config-3.8-x86_64-linux-gnu'
-'/usr/include/python3.8'
-1
-''
-'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions  -Wl,-z,relro -g -fwrapv -O2   '
-'-Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g   -fstack-protector-strong -Wformat -Werror=format-security  -g -fwrapv -O2   '
-'3.8'
-
-Configuration returned from ['/usr/bin/python3']:
-prefix = '/usr'
-SO = '.cpython-38-x86_64-linux-gnu.so'
-LDFLAGS = '-Wl,-Bsymbolic-functions  -Wl,-z,relro -g -fwrapv -O2   '
-LIBDIR = '/usr/lib'
-LIBPL = '/usr/lib/python3.8/config-3.8-x86_64-linux-gnu'
-INCLUDEPY = '/usr/include/python3.8'
-Py_ENABLE_SHARED = 1
-MACOSX_DEPLOYMENT_TARGET = ''
-LDSHARED = 'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions  -Wl,-z,relro -g -fwrapv -O2   '
-CFLAGS = '-Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g   -fstack-protector-strong -Wformat -Werror=format-security  -g -fwrapv -O2   '
-LDVERSION = '3.8'
-
-------------------------------------------------------
-python-config
-/usr/bin/python3-config
-find program=['/usr/bin/python3-config', 'python3.8-config', 'python-config-3.8', 'python3.8m-config'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON_CONFIG' -> ['/usr/bin/python3-config']
---------------------------------------------------------------------------
-Asking python-config for pyembed '--cflags --libs --ldflags --embed' flags
-['/usr/bin/python3-config', '--cflags', '--libs', '--ldflags', '--embed']
-out: -I/usr/include/python3.8 -I/usr/include/python3.8  -Wno-unused-result -Wsign-compare -g -fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=. -specs=/usr/share/dpkg/no-pie-compile.specs -fstack-protector -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O3 -Wall
--lpython3.8 -lcrypt -lpthread -ldl  -lutil -lm -lm 
--L/usr/lib/python3.8/config-3.8-x86_64-linux-gnu -L/usr/lib -lpython3.8 -lcrypt -lpthread -ldl  -lutil -lm -lm 
-
-Unhandled flag '-Wno-unused-result'
-Unhandled flag '-Wsign-compare'
-Unhandled flag '-specs=/usr/share/dpkg/no-pie-compile.specs'
-Unhandled flag '-Wformat'
-Unhandled flag '-Werror=format-security'
-Unhandled flag '-Wall'
-yes
---------------------------------------------------------------------------
-Testing pyembed configuration
-==>
-
-#include <Python.h>
-#ifdef __cplusplus
-extern "C" {
-#endif
-	void Py_Initialize(void);
-	void Py_Finalize(void);
-#ifdef __cplusplus
-}
-#endif
-int main(int argc, char **argv)
-{
-   (void)argc; (void)argv;
-   Py_Initialize();
-   Py_Finalize();
-   return 0;
-}
-
-<==
-[1/2] Compiling [32mbuild/.conf_check_b367436918f7cae05acae23362c521b8/test.cpp[0m
-
-['/usr/bin/g++', '-Wall', '-std=c++11', '-g', '-fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3', '-I/usr/include/python3.8', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3/dist-packages"', '-DNDEBUG', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_b367436918f7cae05acae23362c521b8/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_b367436918f7cae05acae23362c521b8/testbuild/testprog[0m
-
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_b367436918f7cae05acae23362c521b8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python3.8/config-3.8-x86_64-linux-gnu', '-L/usr/lib', '-lpython3.8', '-lcrypt', '-lpthread', '-ldl', '-lutil', '-lm', '-lm', '-lpython3.8', '-lcrypt', '-lpthread', '-ldl', '-lutil', '-lm', '-lm']
-yes
---------------------------------------------------------------------------
-Asking python-config for pyext '--cflags --libs --ldflags' flags
-['/usr/bin/python3-config', '--cflags', '--libs', '--ldflags']
-out: -I/usr/include/python3.8 -I/usr/include/python3.8  -Wno-unused-result -Wsign-compare -g -fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=. -specs=/usr/share/dpkg/no-pie-compile.specs -fstack-protector -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O3 -Wall
- -lcrypt -lpthread -ldl  -lutil -lm -lm 
--L/usr/lib/python3.8/config-3.8-x86_64-linux-gnu -L/usr/lib  -lcrypt -lpthread -ldl  -lutil -lm -lm 
-
-Unhandled flag '-Wno-unused-result'
-Unhandled flag '-Wsign-compare'
-Unhandled flag '-specs=/usr/share/dpkg/no-pie-compile.specs'
-Unhandled flag '-Wformat'
-Unhandled flag '-Werror=format-security'
-Unhandled flag '-Wall'
-yes
---------------------------------------------------------------------------
-Testing pyext configuration
-==>
-
-#include <Python.h>
-#ifdef __cplusplus
-extern "C" {
-#endif
-	void Py_Initialize(void);
-	void Py_Finalize(void);
-#ifdef __cplusplus
-}
-#endif
-int main(int argc, char **argv)
-{
-   (void)argc; (void)argv;
-   Py_Initialize();
-   Py_Finalize();
-   return 0;
-}
-
-<==
-[1/2] Compiling [32mbuild/.conf_check_66b724fcf417dea0fd77d12e509b70c6/test.cpp[0m
-
-['/usr/bin/g++', '-Wall', '-std=c++11', '-fPIC', '-g', '-fdebug-prefix-map=/build/python3.8-4wuY7n/python3.8-3.8.10=.', '-fstack-protector', '-g', '-fwrapv', '-O3', '-I/usr/include/python3.8', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3/dist-packages"', '-DHAVE_PYEMBED=1', '-DNDEBUG', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_66b724fcf417dea0fd77d12e509b70c6/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_66b724fcf417dea0fd77d12e509b70c6/testbuild/testprog.cpython-38-x86_64-linux-gnu.so[0m
-
-['/usr/bin/g++', '-shared', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_66b724fcf417dea0fd77d12e509b70c6/testbuild/testprog.cpython-38-x86_64-linux-gnu.so', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python3.8/config-3.8-x86_64-linux-gnu', '-L/usr/lib', '-lcrypt', '-lpthread', '-ldl', '-lutil', '-lm', '-lm', '-lcrypt', '-lpthread', '-ldl', '-lutil', '-lm', '-lm']
-yes
---------------------------------------------------------------------------
-Checking for compilation flag -fvisibility=hidden support
-==>
-int main() { return 0; }
-<==
-[1/1] Compiling [32mbuild/.conf_check_040c0dd0eda912b8b29d7d1ce92ad6d6/test.cpp[0m
-
-['/usr/bin/g++', '-Wall', '-std=c++11', '-fvisibility=hidden', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_040c0dd0eda912b8b29d7d1ce92ad6d6/testbuild/test.cpp.1.o']
-ok
---------------------------------------------------------------------------
-Checking for compilation flag -Wno-array-bounds support
-==>
-int main() { return 0; }
-<==
-[1/1] Compiling [32mbuild/.conf_check_040c0dd0eda912b8b29d7d1ce92ad6d6/test.cpp[0m
-
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-array-bounds', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_040c0dd0eda912b8b29d7d1ce92ad6d6/testbuild/test.cpp.1.o']
-ok
---------------------------------------------------------------------------
-Checking for pybindgen location
-not found
---------------------------------------------------------------------------
-Checking for python module 'pybindgen'
-['/usr/bin/python3', '-c', "\nimport pybindgen as current_module\nversion = getattr(current_module, '__version__', None)\nif version is not None:\n\tprint(str(version))\nelse:\n\tprint('unknown version')\n"]
 err: Traceback (most recent call last):
-  File "<string>", line 2, in <module>
-ModuleNotFoundError: No module named 'pybindgen'
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'distutils.sysconfig'
 
-not found
-from /home/ericliujian/ns3-mmwave-weather/bindings/python: Could not find the python module 'pybindgen'
---------------------------------------------------------------------------
+from /home/ericliujian/ns3-mmwave-weather/bindings/python: The distutils module is unusable: install "python-devel"?
+------------------------------------------------------
 Checking for click location
 not found
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for program 'pkg-config'
 /usr/bin/pkg-config
-find program=['pkg-config'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
---------------------------------------------------------------------------
+find program=['pkg-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
+------------------------------------------------------
 Checking for 'gtk+-3.0 >= 3.20'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gtk+-3.0', '>=', '3.20']
-out: -pthread -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gtk-3.0 -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/harfbuzz -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+err: Package gtk+-3.0 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `gtk+-3.0.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'gtk+-3.0' found
 
-yes
---------------------------------------------------------------------------
+not found
+from /home/ericliujian/ns3-mmwave-weather/src/config-store: The configuration failed
+------------------------------------------------------
 Checking for 'libxml-2.0 >= 2.7'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'libxml-2.0', '>=', '2.7']
-out: -I/usr/include/libxml2 -lxml2
+err: Package libxml-2.0 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libxml-2.0.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'libxml-2.0' found
 
-yes
---------------------------------------------------------------------------
+not found
+from /home/ericliujian/ns3-mmwave-weather/src/config-store: The configuration failed
+------------------------------------------------------
 checking for uint128_t
 ==>
 
@@ -999,7 +810,7 @@ checking for uint128_t
 <==
 [1/2] Compiling [32mbuild/.conf_check_2f39551c44a4e78a2e4469b1bac2d149/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_2f39551c44a4e78a2e4469b1bac2d149/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_2f39551c44a4e78a2e4469b1bac2d149/testbuild/test.cpp.1.o']
 err: ../test.cpp: In function ‘int main(int, char**)’:
 ../test.cpp:6:7: error: ‘uint128_t’ was not declared in this scope; did you mean ‘uint32_t’?
     6 |  if ((uint128_t *) 0) return 0;
@@ -1027,7 +838,7 @@ waflib.Errors.BuildError: Build failed
 
 not found
 from /home/ericliujian/ns3-mmwave-weather/src/core: The configuration failed
---------------------------------------------------------------------------
+------------------------------------------------------
 checking for __uint128_t
 ==>
 
@@ -1043,15 +854,15 @@ checking for __uint128_t
 <==
 [1/2] Compiling [32mbuild/.conf_check_9858f12ee3e8fd10ddbed7322e7f6d39/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_9858f12ee3e8fd10ddbed7322e7f6d39/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_9858f12ee3e8fd10ddbed7322e7f6d39/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_9858f12ee3e8fd10ddbed7322e7f6d39/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_9858f12ee3e8fd10ddbed7322e7f6d39/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking high precision implementation
 128-bit integer (default)
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header stdint.h
 ==>
 #include <stdint.h>
@@ -1064,12 +875,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header inttypes.h
 ==>
 #include <inttypes.h>
@@ -1082,12 +893,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header sys/inttypes.h
 ==>
 #include <sys/inttypes.h>
@@ -1100,7 +911,7 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_be8f82a542d6af9f438e0ae24dca5ce1/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_be8f82a542d6af9f438e0ae24dca5ce1/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_be8f82a542d6af9f438e0ae24dca5ce1/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:10: fatal error: sys/inttypes.h: No such file or directory
     1 | #include <sys/inttypes.h>
       |          ^~~~~~~~~~~~~~~~
@@ -1116,7 +927,7 @@ waflib.Errors.BuildError: Build failed
 
 not found
 from /home/ericliujian/ns3-mmwave-weather/src/core: The configuration failed
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header sys/types.h
 ==>
 #include <sys/types.h>
@@ -1129,12 +940,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_8921d893cae40686018a1a0f274b919a/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_8921d893cae40686018a1a0f274b919a/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_8921d893cae40686018a1a0f274b919a/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_8921d893cae40686018a1a0f274b919a/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_8921d893cae40686018a1a0f274b919a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header sys/stat.h
 ==>
 #include <sys/stat.h>
@@ -1147,12 +958,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_35c3b87a09b47b232105a7d7cd0283a2/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_35c3b87a09b47b232105a7d7cd0283a2/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_35c3b87a09b47b232105a7d7cd0283a2/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_35c3b87a09b47b232105a7d7cd0283a2/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_35c3b87a09b47b232105a7d7cd0283a2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header dirent.h
 ==>
 #include <dirent.h>
@@ -1165,12 +976,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_42a2d945c05247460c5b0f87cb6870b7/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_42a2d945c05247460c5b0f87cb6870b7/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_42a2d945c05247460c5b0f87cb6870b7/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_42a2d945c05247460c5b0f87cb6870b7/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_42a2d945c05247460c5b0f87cb6870b7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header signal.h
 ==>
 #include <signal.h>
@@ -1183,12 +994,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_4ecf044f3ad7de926ece45637d37a7c2/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_4ecf044f3ad7de926ece45637d37a7c2/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_4ecf044f3ad7de926ece45637d37a7c2/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_4ecf044f3ad7de926ece45637d37a7c2/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_4ecf044f3ad7de926ece45637d37a7c2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header pthread.h
 ==>
 
@@ -1203,12 +1014,12 @@ int main ()
 <==
 [1/2] Compiling [32mbuild/.conf_check_540e61053391cd4cb697e5746d5ea1e2/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_540e61053391cd4cb697e5746d5ea1e2/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_540e61053391cd4cb697e5746d5ea1e2/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_540e61053391cd4cb697e5746d5ea1e2/testbuild/testprog[0m
 
 ['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_540e61053391cd4cb697e5746d5ea1e2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header stdint.h
 ==>
 #include <stdint.h>
@@ -1221,12 +1032,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_78f27eb1cb7d718aa77ac6221c1170cb/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header inttypes.h
 ==>
 #include <inttypes.h>
@@ -1239,12 +1050,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_fc28ad0b265dbc0ea499b0019a3e29a9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header sys/inttypes.h
 ==>
 #include <sys/inttypes.h>
@@ -1257,7 +1068,7 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_be8f82a542d6af9f438e0ae24dca5ce1/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_be8f82a542d6af9f438e0ae24dca5ce1/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_be8f82a542d6af9f438e0ae24dca5ce1/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:10: fatal error: sys/inttypes.h: No such file or directory
     1 | #include <sys/inttypes.h>
       |          ^~~~~~~~~~~~~~~~
@@ -1273,7 +1084,7 @@ waflib.Errors.BuildError: Build failed
 
 not found
 from /home/ericliujian/ns3-mmwave-weather/src/core: The configuration failed
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for library rt
 ==>
 
@@ -1285,31 +1096,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_2b334598ad55df9c966dac32c87d3c5d/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_2b334598ad55df9c966dac32c87d3c5d/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_2b334598ad55df9c966dac32c87d3c5d/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_2b334598ad55df9c966dac32c87d3c5d/testbuild/testprog[0m
 
 ['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_2b334598ad55df9c966dac32c87d3c5d/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
 yes
---------------------------------------------------------------------------
-Checking for header boost/units/systems/si.hpp
-==>
-
-#include <boost/units/systems/si.hpp>
-int main ()
-{
-    auto q = 2 * boost::units::si::meter;
-    q.value ();
-}
-
-<==
-[1/2] Compiling [32mbuild/.conf_check_d3c5e6c589c9841223869d7de01349d0/test.cpp[0m
-
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_RT=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_d3c5e6c589c9841223869d7de01349d0/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_d3c5e6c589c9841223869d7de01349d0/testbuild/testprog[0m
-
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_d3c5e6c589c9841223869d7de01349d0/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
-yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header sys/ioctl.h
 ==>
 #include <sys/ioctl.h>
@@ -1322,12 +1114,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_72d93051ebaa6b5f9d463e7096461b0c/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_72d93051ebaa6b5f9d463e7096461b0c/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_72d93051ebaa6b5f9d463e7096461b0c/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_72d93051ebaa6b5f9d463e7096461b0c/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_72d93051ebaa6b5f9d463e7096461b0c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header net/if.h
 ==>
 #include <net/if.h>
@@ -1340,12 +1132,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_10ae9c9b4244c33b19dacb103f33468c/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_10ae9c9b4244c33b19dacb103f33468c/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_10ae9c9b4244c33b19dacb103f33468c/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_10ae9c9b4244c33b19dacb103f33468c/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_10ae9c9b4244c33b19dacb103f33468c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header net/ethernet.h
 ==>
 #include <net/ethernet.h>
@@ -1358,12 +1150,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_02eff9a880d4ef695f1f39407f17941c/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_02eff9a880d4ef695f1f39407f17941c/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_02eff9a880d4ef695f1f39407f17941c/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_02eff9a880d4ef695f1f39407f17941c/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_02eff9a880d4ef695f1f39407f17941c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for 'libdpdk'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'libdpdk']
 err: Package libdpdk was not found in the pkg-config search path.
@@ -1373,7 +1165,7 @@ No package 'libdpdk' found
 
 not found
 from /home/ericliujian/ns3-mmwave-weather/src/fd-net-device: The configuration failed
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header linux/if_tun.h
 ==>
 #include <linux/if_tun.h>
@@ -1386,12 +1178,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_84bde5bf7ffe777dad5df813b93837c2/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header netpacket/packet.h
 ==>
 #include <netpacket/packet.h>
@@ -1404,12 +1196,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_b65f599c2de3a80c907eb8b7100968be/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_b65f599c2de3a80c907eb8b7100968be/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_b65f599c2de3a80c907eb8b7100968be/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_b65f599c2de3a80c907eb8b7100968be/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_b65f599c2de3a80c907eb8b7100968be/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header net/netmap_user.h
 ==>
 #include <net/netmap_user.h>
@@ -1422,7 +1214,7 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_e9d03684062581acb00eba710bb5272f/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_e9d03684062581acb00eba710bb5272f/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_e9d03684062581acb00eba710bb5272f/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:10: fatal error: net/netmap_user.h: No such file or directory
     1 | #include <net/netmap_user.h>
       |          ^~~~~~~~~~~~~~~~~~~
@@ -1438,16 +1230,20 @@ waflib.Errors.BuildError: Build failed
 
 not found
 from /home/ericliujian/ns3-mmwave-weather/src/fd-net-device: The configuration failed
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for NSC location
 not found
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for 'sqlite3'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'sqlite3']
-out: -lsqlite3
+err: Package sqlite3 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `sqlite3.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'sqlite3' found
 
-yes
---------------------------------------------------------------------------
+not found
+from /home/ericliujian/ns3-mmwave-weather/src/stats: The configuration failed
+------------------------------------------------------
 Checking for header semaphore.h
 ==>
 #include <semaphore.h>
@@ -1460,12 +1256,12 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_c37efbb515ef25356eb075829fe2daf9/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_c37efbb515ef25356eb075829fe2daf9/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_c37efbb515ef25356eb075829fe2daf9/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_c37efbb515ef25356eb075829fe2daf9/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_c37efbb515ef25356eb075829fe2daf9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for header linux/if_tun.h
 ==>
 #include <linux/if_tun.h>
@@ -1478,20 +1274,21 @@ int main(int argc, char **argv) {
 <==
 [1/2] Compiling [32mbuild/.conf_check_84bde5bf7ffe777dad5df813b93837c2/test.cpp[0m
 
-['/usr/bin/g++', '-Wall', '-std=c++11', '-Wno-parentheses', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_SEMAPHORE_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/test.cpp.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/g++', '-Wall', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SEMAPHORE_H=1', '../test.cpp', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/test.cpp.1.o']
 [2/2] Linking [33mbuild/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/testprog[0m
 
 ['/usr/bin/g++', 'test.cpp.1.o', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_84bde5bf7ffe777dad5df813b93837c2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
---------------------------------------------------------------------------
+------------------------------------------------------
 Checking for program 'sudo'
 /usr/bin/sudo
-find program=['sudo'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='SUDO' -> ['/usr/bin/sudo']
---------------------------------------------------------------------------
+find program=['sudo'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='SUDO' -> ['/usr/bin/sudo']
+------------------------------------------------------
 Checking for program 'valgrind'
-/usr/bin/valgrind
-find program=['valgrind'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='VALGRIND' -> ['/usr/bin/valgrind']
---------------------------------------------------------------------------
+not found
+find program=['valgrind'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='VALGRIND' -> None
+from /home/ericliujian/ns3-mmwave-weather: Could not find the program ['valgrind']
+------------------------------------------------------
 Checking for 'gsl'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gsl']
 err: Package gsl was not found in the pkg-config search path.
@@ -1501,31 +1298,31 @@ No package 'gsl' found
 
 not found
 from /home/ericliujian/ns3-mmwave-weather: The configuration failed
---------------------------------------------------------------------------
+------------------------------------------------------
 libgcrypt-config
 not found
-find program=['libgcrypt-config'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='LIBGCRYPT_CONFIG' -> None
+find program=['libgcrypt-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='LIBGCRYPT_CONFIG' -> None
 from /home/ericliujian/ns3-mmwave-weather: Could not find the program ['libgcrypt-config']
---------------------------------------------------------------------------
+-------------------------------------------------------
 Checking for compilation flag -fstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
 [1/1] Compiling [32mbuild/.conf_check_bbeb304d122cb8cef475215642c54663/test.c[0m
 
-['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_SEMAPHORE_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_bbeb304d122cb8cef475215642c54663/testbuild/test.c.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SEMAPHORE_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_bbeb304d122cb8cef475215642c54663/testbuild/test.c.1.o']
 ok
---------------------------------------------------------------------------
+-------------------------------------------------------
 Checking for compilation flag -Wstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
 [1/1] Compiling [32mbuild/.conf_check_bbeb304d122cb8cef475215642c54663/test.c[0m
 
-['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_SEMAPHORE_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_bbeb304d122cb8cef475215642c54663/testbuild/test.c.1.o', '-DHAVE_BOOST_UNITS']
+['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SEMAPHORE_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o/home/ericliujian/ns3-mmwave-weather/build/.conf_check_bbeb304d122cb8cef475215642c54663/testbuild/test.c.1.o']
 ok
---------------------------------------------------------------------------
+-------------------------------------------------------
 Checking for program 'doxygen'
 not found
-find program=['doxygen'] paths=['/home/ericliujian/omnetpp-5.6.2/bin', '/home/ericliujian/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> None
+find program=['doxygen'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> None
 from /home/ericliujian/ns3-mmwave-weather: Could not find the program ['doxygen']
