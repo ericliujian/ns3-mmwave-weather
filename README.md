@@ -3,7 +3,7 @@
 This is an extension of the Millicar module with weather(dust/sand) impacts taken into consideration.
 
 MilliCar is an [ns-3](https://www.nsnam.org "ns-3 Website") module that enables full stack end-to-end simulations in the Vehicle-to-Vehicle (V2V) networks operating in the millimeter wave (mmWave) frequency band.
-We extend it by adding weather impacts into path loss functions.  
+We extend it by adding weather impacts(dust/sand) into path loss functions.  
 
 This project is still in progress and will change without notice.
 
