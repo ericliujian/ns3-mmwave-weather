@@ -42,6 +42,9 @@ CXXFLAGS="-Wall" ./waf configure
 ## References 
 M. Drago, T. Zugno, M. Polese, M. Giordani, M. Zorzi, "Millicar - An ns-3 Module for MmWave NR V2X Networks," Proc. of the Workshop on ns-3 (WNS3), 2020.
 
+## Cite our work
+If you find our work is useful, please use the following bibtex:
+@ARTICLE{9739727,  author={Abuhdima, Esmail and Liu, Jian and Zhao, Chunheng and Elqaouaq, Ahmed and Comert, Gurcan and Huang, Chin-Tser and Pisu, Pierluigi and Nazeri, Amir Hossein},  journal={IEEE Journal of Radio Frequency Identification},   title={Impact of Dust and Sand on 5G Communications for Connected Vehicles Applications},   year={2022},  volume={6},  number={},  pages={229-239},  doi={10.1109/JRFID.2022.3161391}}
 
 ## License ##
 
